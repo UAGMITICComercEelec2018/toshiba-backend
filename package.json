@@ -1,11 +1,12 @@
 {
-  "name": "api.boletomovil.com",
+  "name": "api.suiiki.com",
   "version": "1.0.0",
   "description": "",
   "main": "handler.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "debug": "export SLS_DEBUG=* && serverless offline start --port 9000 --stage local",
+    "debug":
+      "export SLS_DEBUG=* && serverless offline start --port 9000 --stage local",
     "start": "serverless offline start --port 9000 --stage local",
     "deploy": "sh -ac '. ./deploy.sh $FUNCTION'"
   },

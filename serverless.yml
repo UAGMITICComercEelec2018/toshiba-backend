@@ -27,15 +27,15 @@ custom:
     #     - functionInvocations
     #     - functionErrors
     #     - functionThrottles
-    customDomain:
-      basePath: ${file(./serverless.env.yml):${opt:stage, self:custom.default_stage}.SERVICE_DOMAIN_BASE_PATH}
-      domainName: ${file(./serverless.env.yml):${opt:stage, self:custom.default_stage}.SERVICE_DOMAIN_NAME}
-      stage: ${opt:stage, self:custom.default_stage}
+    #customDomain:
+    #   basePath: ${file(./serverless.env.yml):${opt:stage, self:custom.default_stage}.SERVICE_DOMAIN_BASE_PATH}
+    #   domainName: ${file(./serverless.env.yml):${opt:stage, self:custom.default_stage}.SERVICE_DOMAIN_NAME}
+    #   stage: ${opt:stage, self:custom.default_stage}
 plugins:
     - serverless-webpack
     - serverless-offline
     # - serverless-plugin-aws-alerts
-    - serverless-domain-manager
+    # serverless-domain-manager
     - serverless-plugin-split-stacks
 
 provider:
@@ -59,7 +59,7 @@ functions:
         timeout: 30
         events:
             - http:
-                path: demo/
+                path: demo
                 method: get
                 cors: true
     messengerBotWebhook:
