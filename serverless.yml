@@ -27,15 +27,16 @@ custom:
     #     - functionInvocations
     #     - functionErrors
     #     - functionThrottles
-    #customDomain:
-    #   basePath: ${file(./serverless.env.yml):${opt:stage, self:custom.default_stage}.SERVICE_DOMAIN_BASE_PATH}
-    #   domainName: ${file(./serverless.env.yml):${opt:stage, self:custom.default_stage}.SERVICE_DOMAIN_NAME}
-    #   stage: ${opt:stage, self:custom.default_stage}
+    customDomain:
+      basePath: ${file(./serverless.env.yml):${opt:stage, self:custom.default_stage}.SERVICE_DOMAIN_BASE_PATH}
+      domainName: ${file(./serverless.env.yml):${opt:stage, self:custom.default_stage}.SERVICE_DOMAIN_NAME}
+      stage: ${opt:stage, self:custom.default_stage}
+      createRoute53Record: true
 plugins:
     - serverless-webpack
     - serverless-offline
     # - serverless-plugin-aws-alerts
-    # serverless-domain-manager
+    - serverless-domain-manager
     - serverless-plugin-split-stacks
 
 provider:
@@ -59,18 +60,26 @@ functions:
         timeout: 30
         events:
             - http:
-                path: demo
-                method: get
+                path: demo/{someVar}
+                method: put
                 cors: true
     messengerBotWebhook:
         handler: src/functions/messenger.webhook
         timeout: 30
         events:
-          - http:
-              path: webhook/messenger
-              method: get
-              cors: true
-          - http:
-              path: webhook/messenger
-              method: post
-              cors: true
+            - http:
+                path: webhook/messenger
+                method: get
+                cors: true
+            - http:
+                path: webhook/messenger
+                method: post
+                cors: true
+    createOxxoCharge:
+        handler: src/functions/conekta.createOxxoCharge
+        timeout: 30
+        events:
+            - http:
+                path: charge/oxxo
+                method: put
+                cors: true

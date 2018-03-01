@@ -5,8 +5,7 @@
   "main": "handler.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "debug":
-      "export SLS_DEBUG=* && serverless offline start --port 9000 --stage local",
+    "debug": "export SLS_DEBUG=* && serverless offline start --port 9000 --stage local",
     "start": "serverless offline start --port 9000 --stage local",
     "deploy": "sh -ac '. ./deploy.sh $FUNCTION'"
   },
@@ -38,6 +37,7 @@
     "@types/request": "^2.0.8",
     "babel-runtime": "^6.26.0",
     "bcryptjs": "^2.4.3",
+    "conekta": "^3.3.1",
     "iconv-lite": "^0.4.19",
     "moment": "^2.19.3",
     "moment-timezone": "^0.5.14",

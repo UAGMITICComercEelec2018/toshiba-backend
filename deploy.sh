@@ -27,8 +27,8 @@ then
 else
     if [ $1 ]
     then
-      export SLS_DEBUG=* && serverless deploy function --function $1 --stage ${branch} -t
+      export SLS_DEBUG=* && serverless deploy function --function $1 --stage development -t
     else
-      export SLS_DEBUG=* && serverless deploy --stage ${branch} -t
+      export SLS_DEBUG=* && serverless deploy --stage development -t
     fi
 fi
