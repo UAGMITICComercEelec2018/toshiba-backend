@@ -6,4 +6,10 @@ conekta.api_version = '2.0.0';
 
 export async function createOxxoCharge(event, context, callback) {
   console.log(conekta);
+  return callback{null,success{}};
+}
+
+export async function conektaWebhook(event, context, callback) {
+  console.log(conekta);
+  return callback{null,success{}};
 }

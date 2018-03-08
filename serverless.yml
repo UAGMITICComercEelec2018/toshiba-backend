@@ -83,3 +83,11 @@ functions:
                 path: charge/oxxo
                 method: put
                 cors: true
+    conektaWebhook:
+        handler: src/functions/conekta.conektaWebhook
+        timeout: 30
+        events:
+            - http:
+                path: conekta/webhook
+                method: put
+                cors: true
