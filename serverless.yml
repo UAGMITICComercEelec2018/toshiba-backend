@@ -28,7 +28,7 @@ custom:
     #     - functionErrors
     #     - functionThrottles
     customDomain:
-      basePath: ${file(./serverless.env.yml):${opt:stage, self:custom.default_stage}.SERVICE_DOMAIN_BASE_PATH}
+      basePath: ${opt:stage, self:custom.default_stage}
       domainName: ${file(./serverless.env.yml):${opt:stage, self:custom.default_stage}.SERVICE_DOMAIN_NAME}
       stage: ${opt:stage, self:custom.default_stage}
       createRoute53Record: true
