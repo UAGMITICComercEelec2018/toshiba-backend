@@ -6,7 +6,7 @@ conekta.api_version = '2.0.0';
 
 export async function createOxxoCharge(event, context, callback) {
   console.log(conekta);
-  order = conekta.Order.create({
+  const order = conekta.Order.create({
     "line_items": [{
         "name": "Tacos",
         "unit_price": 1000,
@@ -19,7 +19,7 @@ export async function createOxxoCharge(event, context, callback) {
     "currency": "MXN",
     "customer_info": {
       "name": "Fulanito Pérez",
-      "email": "<a href="mailto:fulanito@conekta.com">fulanito@conekta.com</a>",
+      "email": "mailto@mail.com",
       "phone": "+5218181818181"
     },
     "shipping_contact":{
@@ -42,5 +42,5 @@ export async function createOxxoCharge(event, context, callback) {
 
 export async function conektaWebhook(event, context, callback) {
   console.log(conekta);
-  return callback{null,success{}};
+  return callback(null,success({}));
 }
