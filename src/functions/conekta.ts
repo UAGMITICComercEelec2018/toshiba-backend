@@ -168,3 +168,8 @@ export async function onPaypalResult(event, context, callback) {
     return callback(null, success(error));
   }
 }
+
+export async function onPayPalPurchaseSNS(event, context, callback) {
+  console.log(event);
+  return callback(null, success({ event }));
+}
