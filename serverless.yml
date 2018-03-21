@@ -91,3 +91,24 @@ functions:
                 path: conekta/webhook
                 method: put
                 cors: true
+    createPayPalCharge:
+        handler: src/functions/conekta.createPayPalCharge
+        timeout: 30
+        events:
+          - http:
+                path: charge/paypal/{itemID}
+                method: get
+                cors: true
+    onPayPalResult:
+        handler: src/functions/conekta.onPayPalResult
+        timeout: 30
+        events:
+          - http:
+                path: charge/result/{successOrError}
+                method: get
+                cors: true
+    onPayPalPurchaseSNS:
+        handler: src/functions/demo.onPayPalPurchaseSNS
+        timeout: 30
+        events:
+          - sns: ${file(./serverless.env.yml):${opt:stage, self:custom.default_stage}.PAYPAL_PURCHASE_SNS}
