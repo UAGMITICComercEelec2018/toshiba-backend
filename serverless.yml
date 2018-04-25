@@ -80,8 +80,8 @@ functions:
         timeout: 30
         events:
             - http:
-                path: charge/oxxo
-                method: put
+                path: charge/oxxo/{itemID}
+                method: get
                 cors: true
     conektaWebhook:
         handler: src/functions/conekta.conektaWebhook
@@ -104,11 +104,15 @@ functions:
         timeout: 30
         events:
           - http:
-                path: charge/result/{successOrError}
+                path: paypal/result/{successOrError}
                 method: get
                 cors: true
     onPayPalPurchaseSNS:
-        handler: src/functions/demo.onPayPalPurchaseSNS
+        handler: src/functions/conekta.onPayPalPurchaseSNS
         timeout: 30
         events:
+          - http:
+                path: testemail
+                method: get
+                cors: true
           - sns: ${file(./serverless.env.yml):${opt:stage, self:custom.default_stage}.PAYPAL_PURCHASE_SNS}
